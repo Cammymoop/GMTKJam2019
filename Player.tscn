@@ -1,0 +1,136 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/images/player2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/player3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/player4.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/player1.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/player5.png" type="Texture" id=6]
+[ext_resource path="res://Sprite.gd" type="Script" id=7]
+[ext_resource path="res://assets/images/crate.png" type="Texture" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 15 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "stand_hold",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "walk_hold",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "jump_hold",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "stand",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "kick",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 23, 22 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 9, 8 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 134, 53 )
+collision_layer = 4
+collision_mask = 2051
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+jump_velocity = 255
+
+[node name="Camera2D" type="Camera2D" parent="."]
+visible = false
+current = true
+limit_left = 0
+limit_top = -135
+limit_right = 1440
+limit_bottom = 810
+drag_margin_left = 0.15
+drag_margin_right = 0.15
+editor_draw_screen = false
+editor_draw_limits = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 8 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -6, -7, 8, -7, 8, 21, 5, 23, -3, 23, -6, 21 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+z_index = 2
+frames = SubResource( 2 )
+animation = "stand"
+offset = Vector2( 1, 0 )
+script = ExtResource( 7 )
+
+[node name="DummyCrate" type="Sprite" parent="Sprite"]
+visible = false
+position = Vector2( 0, -17 )
+z_index = -1
+texture = ExtResource( 8 )
+offset = Vector2( 0.5, 0.5 )
+
+[node name="GrabBox" type="Area2D" parent="."]
+visible = false
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabBox"]
+position = Vector2( 2, 7 )
+shape = SubResource( 3 )
+
+[node name="KickBox" type="Area2D" parent="."]
+visible = false
+monitorable = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KickBox"]
+position = Vector2( 14, 16 )
+shape = SubResource( 4 )
+
+[node name="KickTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+[connection signal="frame_changed" from="Sprite" to="Sprite" method="_on_Sprite_frame_changed"]
+[connection signal="body_entered" from="GrabBox" to="." method="_on_GrabBox_body_entered"]
+[connection signal="body_exited" from="GrabBox" to="." method="_on_GrabBox_body_exited"]
+[connection signal="body_entered" from="KickBox" to="." method="_on_KickBox_body_entered"]
+[connection signal="body_exited" from="KickBox" to="." method="_on_KickBox_body_exited"]
+[connection signal="timeout" from="KickTimer" to="." method="_on_KickTimer_timeout"]

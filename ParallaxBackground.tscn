@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/images/bg.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+editor/display_folded = true
+layer = -2
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.3, 0.3 )
+
+[node name="bg" type="Sprite" parent="ParallaxLayer"]
+position = Vector2( -170, -140 )
+texture = ExtResource( 1 )
+centered = false
