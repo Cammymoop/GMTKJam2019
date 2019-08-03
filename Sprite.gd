@@ -27,12 +27,15 @@ func play_anim(anim_name : String) -> void:
 
 func set_facing(f : String) -> void:
 	facing = f
+	var kick_box = get_node('../KickBox')
 	if facing == "right":
 		flip_h = false
 		offset.x = 1
+		kick_box.position.x = 10
 	else:
 		flip_h = true
 		offset.x = 0
+		kick_box.position.x = -8
 
 func _on_Sprite_frame_changed():
 	if not is_holding:

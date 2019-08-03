@@ -17,7 +17,7 @@ var mode = 'standby'
 
 var home = Vector2(0, 0)
 
-var close_enough = 1.8
+var close_enough = 3.8
 
 func _ready():
 	home = global_position
@@ -100,6 +100,7 @@ func show_grab() -> void:
 func do_release() -> void:
 	var c = crate_scene.instance()
 	c.position = global_position
+	c.name = c.name + 'h'
 	find_parent('Root').add_child(c)
 	show_release()
 func show_release() -> void:

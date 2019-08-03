@@ -35,6 +35,7 @@ var BOX_LAYER = 1
 
 var ON_GROUND_LAYER = 7
 var ON_GROUND_WITH_CRATE_LAYER = 8
+var WITH_CRATE_LAYER = 9
 
 
 func _ready():
@@ -44,8 +45,6 @@ func _ready():
 	r_checkpointer = get_node("/root/Checkpointer")
 	
 	var is_checkpoint = r_checkpointer.is_checkpoint()
-	
-	print('checkpoint' if is_checkpoint else 'no checkpoint')
 	
 	if is_checkpoint:
 		checkpoint_respawn()
@@ -108,7 +107,7 @@ func _physics_process(delta):
 			$Sprite.set_facing(new_facing)
 
 func save_checkpoint(checkpoint_coin : Node):
-	print('now saving checkpint')
+	#print('now saving checkpint')
 	r_checkpointer.set_checkpoint(self, checkpoint_coin.get_path())
 
 func clear_checkpoint():
@@ -129,7 +128,10 @@ func _process(delta):
 		reset_game()
 	
 	if Input.is_action_just_pressed("action_reset"):
-		reset_game()
+		if Input.is_action_pressed("action_kick"):
+			full_reset()
+		else:
+			reset_game()
 	
 	if crate_held and Input.is_action_just_pressed("action_grab"):
 		throw_crate()
@@ -138,8 +140,11 @@ func _process(delta):
 	
 	if found_crate and Input.is_action_just_pressed("action_grab"):
 		pickup_crate()
-	if found_crate and Input.is_action_just_pressed("action_kick"):
-		kick_the_crate()
+	if Input.is_action_just_pressed("action_kick"):
+		if found_kick_crate:
+			kick_the_crate()
+		else:
+			start_kick_anim()
 	
 	if Input.is_action_just_pressed("fullscreen_button"):
 		OS.window_fullscreen = not OS.window_fullscreen
@@ -155,8 +160,15 @@ func set_on_ground(new_on_ground : bool) -> void:
 func update_layers():
 	set_collision_layer_bit(ON_GROUND_LAYER, on_ground)
 	set_collision_layer_bit(ON_GROUND_WITH_CRATE_LAYER, on_ground and crate_held)
+	set_collision_layer_bit(WITH_CRATE_LAYER, crate_held)
+
+func update_crate_ref():
+	var crates = get_tree().get_nodes_in_group("the_crate")
+	if len(crates) > 0:
+		r_crate = crates[0]
 
 func pickup_crate():
+	update_crate_ref()
 	if y_velocity < 0 and (r_crate.position.y - position.y) > 29:
 		return # crate jump prevention
 	set_crate_held(true)
@@ -166,6 +178,7 @@ func pickup_crate():
 	set_on_ground(false)
 
 func throw_crate(kick : bool = false):
+	update_crate_ref()
 	set_crate_held(false)
 	$Sprite.set_holding(false)
 	r_crate = crate_scene.instance()
@@ -188,6 +201,8 @@ func throw_crate(kick : bool = false):
 			imp.x = - imp.x
 		
 		r_crate.apply_impulse(r_crate.position, imp)
+		if kick:
+			r_crate.slide()
 	r_root.add_child(r_crate)
 	
 	if kick:
@@ -198,6 +213,7 @@ func kick_the_crate():
 	if $Sprite.get_facing() == "left":
 		imp.x = - imp.x
 	r_crate.apply_impulse(r_crate.position, imp)
+	r_crate.slide()
 	start_kick_anim()
 
 func start_kick_anim():
@@ -209,6 +225,11 @@ func start_kick_anim():
 func reset_game() -> void:
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
+
+func full_reset() -> void:
+	clear_checkpoint()
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://GameScene.tscn")
 
 func _on_GrabBox_body_entered(body):
 	found_crate = body

@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GMTKJam2019"
+config/name="Crate Buddy"
 run/main_scene="res://GameScene.tscn"
 config/icon="res://icon.png"
 
@@ -133,6 +133,7 @@ fullscreen_button={
 2d_physics/layer_3="player"
 2d_physics/layer_8="grounded_player"
 2d_physics/layer_9="g_player_and_crate"
+2d_physics/layer_10="player_and_crate"
 
 [physics]
 
