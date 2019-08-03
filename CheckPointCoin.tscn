@@ -1,0 +1,42 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/images/checkpoint_coin1.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/checkpoint_coin2.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/checkpoint_coin3.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/checkpoint_coin4.png" type="Texture" id=4]
+[ext_resource path="res://assets/images/checkpoint_coin5.png" type="Texture" id=5]
+[ext_resource path="res://assets/images/checkpoint_coin6.png" type="Texture" id=6]
+[ext_resource path="res://Coin.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "spin",
+"speed": 15.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 12.0
+
+[node name="CheckpointCoin" type="AnimatedSprite"]
+position = Vector2( 2, 7 )
+frames = SubResource( 3 )
+animation = "spin"
+frame = 9
+playing = true
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+mode = "checkpoint"
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+monitorable = false
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

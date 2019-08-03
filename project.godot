@@ -19,6 +19,10 @@ config/name="GMTKJam2019"
 run/main_scene="res://GameScene.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Checkpointer="*res://Checkpointer.gd"
+
 [display]
 
 window/size/width=480
@@ -121,6 +125,14 @@ fullscreen_button={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="solid"
+2d_physics/layer_2="box"
+2d_physics/layer_3="player"
+2d_physics/layer_8="grounded_player"
+2d_physics/layer_9="g_player_and_crate"
 
 [physics]
 
