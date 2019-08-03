@@ -146,8 +146,8 @@ func _process(delta):
 		else:
 			start_kick_anim()
 	
-	if Input.is_action_just_pressed("fullscreen_button"):
-		OS.window_fullscreen = not OS.window_fullscreen
+	#if Input.is_action_just_pressed("fullscreen_button"):
+		#OS.window_fullscreen = not OS.window_fullscreen
 
 func set_crate_held(new_crate_held : bool) -> void:
 	crate_held = new_crate_held
@@ -256,3 +256,7 @@ func _on_KickBox_body_entered(body):
 
 func _on_KickBox_body_exited(body):
 	found_kick_crate = null
+
+func _input(ev):
+    if ev.is_action_pressed('fullscreen_button'):
+        OS.window_fullscreen = !OS.window_fullscreen
