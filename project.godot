@@ -22,6 +22,11 @@ config/icon="res://icon.png"
 [autoload]
 
 Checkpointer="*res://Checkpointer.gd"
+BonusLoader="*res://BonusLoader.tscn"
+
+[debug]
+
+gdscript/warnings/return_value_discarded=false
 
 [display]
 
@@ -30,6 +35,11 @@ window/size/height=270
 window/size/test_width=960
 window/size/test_height=540
 window/stretch/mode="viewport"
+
+[gui]
+
+theme/custom="res://assets/theme.tres"
+theme/custom_font="res://assets/font/my_font_black.tres"
 
 [importer_defaults]
 
@@ -148,3 +158,4 @@ fullscreen_button={
 quality/2d/use_pixel_snap=true
 environment/default_clear_color=Color( 0.94902, 0.67451, 0.827451, 1 )
 environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

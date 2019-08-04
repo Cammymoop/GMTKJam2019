@@ -36,7 +36,7 @@ func _process(delta):
 			set_mode('reset')
 			return
 		
-		var there = move_to(targeted_crate.position, grab_speed, grab_speed, false, delta)
+		var there = move_to(targeted_crate.position, grab_speed, grab_speed_2, false, delta)
 		if there:
 			set_mode('grabbed')
 	elif mode == 'grabbed':
@@ -110,5 +110,6 @@ func show_release() -> void:
 func _on_CrateDetector_body_entered(body):
 	targeted_crate = body
 
+# warning-ignore:unused_argument
 func _on_CrateDetector_body_exited(body):
 	targeted_crate = null

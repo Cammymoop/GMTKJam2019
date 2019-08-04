@@ -9,6 +9,7 @@ func _ready():
 	
 	total_balloons = ch.get_popped_total()
 	show_balloons(total_balloons)
+	$Label.text += str(total_balloons)
 
 func show_balloons(count : int):
 	var all_balloons = $Balloons.get_children()
@@ -20,7 +21,9 @@ func show_balloons(count : int):
 		if i > count:
 			b.visible = false
 
+# warning-ignore:unused_argument
 func _process(delta):
 	if Input.is_action_just_pressed("action_reset") or Input.is_action_just_pressed("action_grab"):
 		get_node("/root/Checkpointer").reset_balloons()
+# warning-ignore:return_value_discarded
 		get_tree().change_scene(start_level)

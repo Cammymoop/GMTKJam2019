@@ -45,6 +45,8 @@ tile_data = PoolIntArray( 4587636, 1, 0, 4849778, 1, 0, 4849780, 1, 0, 4849782, 
 editor/display_folded = true
 position = Vector2( 1058, 537 )
 next_scene = ExtResource( 6 )
+bonus_requirement = 9
+bonus_destination = "BonusLevel1"
 
 [node name="Camera2D" parent="Player" index="0"]
 visible = true
@@ -58,15 +60,15 @@ position = Vector2( 56, 504 )
 
 [node name="Coin" parent="." instance=ExtResource( 9 )]
 position = Vector2( 542, 576 )
-frame = 7
+frame = 5
 
 [node name="Coin2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 550, 605 )
-frame = 7
+frame = 5
 
 [node name="Coin3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 823, 680 )
-frame = 6
+frame = 4
 
 [node name="Grabber" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
@@ -78,7 +80,7 @@ position = Vector2( 119, 496 )
 
 [node name="CheckpointCoin" parent="." instance=ExtResource( 11 )]
 position = Vector2( 543, 681 )
-frame = 2
+frame = 0
 
 [node name="Balloon" parent="." instance=ExtResource( 12 )]
 position = Vector2( 392, 669 )

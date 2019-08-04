@@ -80,11 +80,11 @@ position = Vector2( 541.553, 416.353 )
 
 [node name="Coin" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1037, 384 )
-frame = 2
+frame = 9
 
 [node name="CheckpointCoin" parent="." instance=ExtResource( 11 )]
 position = Vector2( 892, 577 )
-frame = 4
+frame = 1
 
 [node name="Balloon" parent="." instance=ExtResource( 12 )]
 position = Vector2( 569, 449 )

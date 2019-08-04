@@ -55,7 +55,7 @@ z_index = 1
 position = Vector2( 455, 176 )
 
 [node name="Coin" parent="." instance=ExtResource( 9 )]
-frame = 2
+frame = 4
 
 [node name="Balloon" parent="." instance=ExtResource( 10 )]
 position = Vector2( 407, 95 )

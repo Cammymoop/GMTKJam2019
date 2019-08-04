@@ -14,6 +14,7 @@ func _process(delta):
 		if position.y < -400:
 			queue_free()
 
+# warning-ignore:unused_argument
 func _on_Area2D_body_entered(body):
 	collected = true
 	

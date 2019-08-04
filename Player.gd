@@ -12,6 +12,10 @@ export var spawns_with_crate : bool = false
 
 export var next_scene : PackedScene
 
+export var bonus_requirement : int = -1
+export var bonus_is_local : bool = true
+export var bonus_destination : String = ''
+
 var found_crate : RigidBody2D = null
 var found_kick_crate : RigidBody2D = null
 var crate_held : bool = false
@@ -53,6 +57,8 @@ func _ready():
 	
 	if is_checkpoint or spawns_with_crate:
 		spawn_with_crate()
+	
+	r_checkpointer.scene_start()
 
 # warning-ignore:unused_argument
 func _physics_process(delta):
@@ -110,10 +116,11 @@ func _physics_process(delta):
 
 func save_checkpoint(checkpoint_coin : Node):
 	#print('now saving checkpint')
-	r_checkpointer.set_checkpoint(self, checkpoint_coin.get_path())
+	r_checkpointer.set_checkpoint(self, checkpoint_coin.get_path(), popped_count)
 
-func save_popped_balloons():
+func save_popped_balloons() -> int:
 	r_checkpointer.add_popped_balloons(popped_count)
+	return r_checkpointer.get_popped_total()
 
 func clear_popped_balloons():
 	r_checkpointer.reset_balloons()
@@ -124,6 +131,7 @@ func clear_checkpoint():
 func checkpoint_respawn():
 	position = r_checkpointer.get_checkpoint_position()
 	get_node(r_checkpointer.get_checkpoint_node_path()).queue_free()
+	popped_count = r_checkpointer.get_checkpoint_balloons()
 
 func spawn_with_crate():
 	r_crate.queue_free()
@@ -243,6 +251,7 @@ func full_reset() -> void:
 func _on_GrabBox_body_entered(body):
 	found_crate = body
 
+# warning-ignore:unused_argument
 func _on_GrabBox_body_exited(body):
 	found_crate = null
 
@@ -251,7 +260,17 @@ func end() -> void:
 		return
 	
 	clear_checkpoint()
-	save_popped_balloons()
+	var total_balloons_so_far = save_popped_balloons()
+	
+	if bonus_requirement > -1:
+		var got_balloons = popped_count if bonus_is_local else total_balloons_so_far
+		if got_balloons >= bonus_requirement:
+			var actual_destination = "res://" + bonus_destination + ".tscn"
+			get_node("/root/BonusLoader").set_scene(actual_destination)
+# warning-ignore:return_value_discarded
+			get_tree().change_scene("res://BonusScene.tscn")
+			return
+			
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to(next_scene)
 
@@ -267,6 +286,7 @@ func _on_KickTimer_timeout():
 func _on_KickBox_body_entered(body):
 	found_kick_crate = body
 
+# warning-ignore:unused_argument
 func _on_KickBox_body_exited(body):
 	found_kick_crate = null
 

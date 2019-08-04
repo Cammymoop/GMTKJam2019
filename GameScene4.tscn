@@ -72,7 +72,7 @@ position = Vector2( 73, 70 )
 
 [node name="SquareCoin" parent="." instance=ExtResource( 10 )]
 position = Vector2( 72, 105 )
-frame = 0
+frame = 8
 
 [node name="Balloon" parent="." instance=ExtResource( 11 )]
 position = Vector2( 508, 147 )
