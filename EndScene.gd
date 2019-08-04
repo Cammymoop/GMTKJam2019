@@ -19,7 +19,7 @@ func show_balloons(count : int):
 	for b in all_balloons:
 		i += 1
 		if i > count:
-			b.visible = false
+			b.queue_free()
 
 # warning-ignore:unused_argument
 func _process(delta):

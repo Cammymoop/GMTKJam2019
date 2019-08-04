@@ -13,7 +13,6 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Balloons" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="Balloon" parent="Balloons" instance=ExtResource( 3 )]
 position = Vector2( 329, 35 )
@@ -35,6 +34,84 @@ position = Vector2( 123, 36 )
 
 [node name="Balloon7" parent="Balloons" instance=ExtResource( 3 )]
 position = Vector2( 185, 219 )
+
+[node name="Balloon48" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 203, 243 )
+
+[node name="Balloon49" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 281, 253 )
+
+[node name="Balloon50" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 347, 252 )
+
+[node name="Balloon51" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 420, 167 )
+
+[node name="Balloon52" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 436, 111 )
+
+[node name="Balloon53" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 455, 70 )
+
+[node name="Balloon54" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 361, 75 )
+
+[node name="Balloon55" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 358, 31 )
+
+[node name="Balloon56" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 109, 244 )
+
+[node name="Balloon57" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 68, 187 )
+
+[node name="Balloon58" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 464, 221 )
+
+[node name="Balloon59" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 393, 265 )
+
+[node name="Balloon60" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 480, 175 )
+
+[node name="Balloon61" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 1, 61 )
+
+[node name="Balloon62" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 135, 12 )
+
+[node name="Balloon63" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 252, 14 )
+
+[node name="Balloon64" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 315, 60 )
+
+[node name="Balloon65" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 85, 271 )
+
+[node name="Balloon66" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 2, 228 )
+
+[node name="Balloon67" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 67, 8 )
+
+[node name="Balloon68" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 348, 210 )
+
+[node name="Balloon69" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 366, 138 )
+
+[node name="Balloon70" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 291, 190 )
+
+[node name="Balloon71" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 283, 93 )
+
+[node name="Balloon72" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 384, 16 )
+
+[node name="Balloon73" parent="Balloons" instance=ExtResource( 3 )]
+position = Vector2( 399, 208 )
 
 [node name="Balloon8" parent="Balloons" instance=ExtResource( 3 )]
 position = Vector2( 439, 243 )

@@ -19,6 +19,12 @@ var home = Vector2(0, 0)
 
 var close_enough = 3.8
 
+var pachinko = false
+var pachinko_distance = 0
+var pachinko_offset = 0
+
+var pachinko_cam : Camera2D
+
 func _ready():
 	home = global_position
 	
@@ -26,6 +32,12 @@ func _ready():
 	if not dp_path:
 		dp_path = '../GrabDropoff'
 	r_dropoff_point = get_parent().get_node(dp_path)
+
+func set_pachinko(distance, camera):
+	pachinko = true
+	pachinko_distance = distance
+	
+	pachinko_cam = get_parent().get_node(camera)
 
 func _process(delta):
 	if mode == 'standby' and targeted_crate:
@@ -40,7 +52,10 @@ func _process(delta):
 		if there:
 			set_mode('grabbed')
 	elif mode == 'grabbed':
-		var there = move_to(r_dropoff_point.position, raise_speed, side_speed, true, delta)
+		var dropoff_pos = r_dropoff_point.position
+		if pachinko:
+			dropoff_pos.x += pachinko_offset
+		var there = move_to(dropoff_pos, raise_speed, side_speed, true, delta)
 		if there:
 			do_release()
 			set_mode('reset')
@@ -82,6 +97,10 @@ func set_mode(new_mode):
 	mode = new_mode
 	if mode == 'grabbed':
 		do_grab()
+		if pachinko:
+			pachinko_offset = randi() % pachinko_distance
+			print(pachinko_offset)
+			pachinko_cam.make_current()
 	if mode == 'reset':
 		show_release()
 	
@@ -103,6 +122,8 @@ func do_release() -> void:
 	c.name = c.name + 'h'
 	find_parent('Root').add_child(c)
 	show_release()
+	if pachinko:
+		c.make_circle()
 func show_release() -> void:
 	$DummyCrate.visible = false
 	play('no_grab')

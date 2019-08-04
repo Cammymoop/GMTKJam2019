@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/tileset/PlayerTiles.tres" type="TileSet" id=3]
 [ext_resource path="res://ParallaxBackground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=5]
-[ext_resource path="res://EndScene.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GameScene6.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Crate.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Doorway.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Grabber.tscn" type="PackedScene" id=9]
@@ -93,67 +93,67 @@ position = Vector2( 978, -45 )
 [node name="SquareCoin" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 189, 292 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin2" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 189, 316 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin8" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 307, 316 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin10" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 407, 316 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin11" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 407, 289 )
-frame = 7
+frame = 1
 
 [node name="SquareCoin12" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 407, 260 )
-frame = 7
+frame = 1
 
 [node name="SquareCoin9" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 307, 291 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin3" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 600, 309 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin4" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 628, 290 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin5" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 656, 280 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin6" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 602, 276 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin7" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 1025, 121 )
-frame = 9
+frame = 3
 
 [node name="SquareCoin13" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 998, 121 )
-frame = 8
+frame = 2
 
 [node name="Balloon" parent="." instance=ExtResource( 11 )]
 position = Vector2( 410, 211 )
@@ -166,6 +166,7 @@ position = Vector2( 1101, 142 )
 
 [node name="CheckpointCoin" parent="." instance=ExtResource( 12 )]
 position = Vector2( 731, 237 )
+frame = 3
 
 [editable path="Player"]
 

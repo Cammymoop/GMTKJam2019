@@ -7,8 +7,15 @@ export var normal_friction = 1.0
 export var slide_friction = 0.2
 var slide_on = false
 
+var circle_shape = preload("res://CrateCircle.tres")
+var bounce_mat = preload("res://bouncy_box.tres")
+
 func _ready():
 	physics_material_override.friction = normal_friction
+
+func make_circle():
+	$CollisionShape2D.shape = circle_shape
+	physics_material_override = bounce_mat
 
 func disable() -> void:
 	enabled = false
