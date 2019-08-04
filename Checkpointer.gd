@@ -4,11 +4,14 @@ var checkpoint_position : Vector2 = Vector2(0, 0)
 
 var checkpoint_node_path : String = ''
 
+var popped_balloon_total = 0
+
 func _ready():
-	print('checkpoint ready')
+	#print('checkpoint ready')
+	pass
 
 func set_checkpoint(player : Node2D, checkpoint_path : String):
-	print('set to: ' + checkpoint_path)
+	#print('set to: ' + checkpoint_path)
 	checkpoint_node_path = checkpoint_path
 	checkpoint_position = player.position
 
@@ -26,3 +29,14 @@ func is_checkpoint() -> bool:
 	if len(checkpoint_node_path) > 0:
 		return true
 	return false
+
+
+func add_popped_balloons(amount : int):
+	popped_balloon_total += amount
+	print(popped_balloon_total)
+
+func reset_balloons():
+	popped_balloon_total = 0
+
+func get_popped_total() -> int:
+	return popped_balloon_total

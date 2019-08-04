@@ -27,5 +27,5 @@ func slide():
 
 func _on_SlideTimer_timeout():
 	slide_on = false
-	print('done with the sliding')
+	#print('done with the sliding')
 	physics_material_override.friction = normal_friction

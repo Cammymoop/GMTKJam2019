@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tileset/NormalTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tileset/CrateTileset.tres" type="TileSet" id=2]
@@ -10,9 +10,13 @@
 [ext_resource path="res://Doorway.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Grabber.tscn" type="PackedScene" id=9]
 [ext_resource path="res://SquareCoin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Balloon.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 49, 34 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 83, 34 )
 
 [node name="Root" type="Node2D"]
 
@@ -22,7 +26,7 @@ extents = Vector2( 49, 34 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 8, 8 )
 format = 1
-tile_data = PoolIntArray( -1114112, 536870912, 1, -1114058, 0, 1, -983040, 536870912, 1, -982986, 0, 1, -851968, 536870912, 1, -851914, 0, 1, -851837, 0, 1, -720896, 536870912, 1, -720842, 0, 1, -720765, 0, 2, -589824, 536870912, 2, -589770, 0, 1, -589693, 0, 1, -458752, 536870912, 2, -458698, 0, 1, -458621, 0, 2, -327680, 536870912, 2, -327626, 0, 1, -327549, 0, 1, -196608, 536870912, 2, -196554, 0, 1, -196477, 0, 2, -65536, 536870912, 2, -65482, 0, 1, -65405, 0, 0, 65536, 0, 2, 65667, 0, 2, 196608, 0, 2, 196739, 0, 1, 327680, 0, 2, 327811, 0, 2, 458752, 0, 2, 458883, 0, 0, 589824, 0, 2, 589955, 0, 2, 720896, 0, 2, 721027, 0, 1, 851968, 0, 2, 852099, 0, 2, 983040, 0, 2, 983171, 0, 1, 1114112, 0, 2, 1114216, 1, 0, 1114218, 1, 0, 1114220, 1, 0, 1114222, 1, 0, 1114224, 1, 0, 1114226, 1, 0, 1114228, 1, 0, 1114230, 0, 1, 1114232, 0, 1, 1114234, 0, 0, 1114236, 0, 1, 1114238, 0, 1, 1114240, 0, 0, 1114242, 0, 0, 1114244, 0, 1, 1245184, 536870912, 2, 1376256, 536870912, 2, 1507328, 536870912, 2, 1638400, 536870912, 2, 1769472, 0, 2, 1900544, 0, 2, 2031616, 0, 2, 2162688, 0, 2, 2293760, 0, 2, 2424832, 0, 1, 2555904, 0, 1, 2686976, 536870912, 1, 2752514, 0, 2, 2752516, 0, 2, 2752518, 0, 2, 2752520, 0, 2, 2752522, 0, 2, 2752524, 0, 2, 2752526, 0, 2, 2752528, 0, 2, 2752530, 0, 2, 2752542, 536870912, 1, 2818048, 536870912, 1, 2949120, 536870912, 1, 3080192, 536870912, 1, 3211264, 0, 1, 3342336, 0, 1, 3473408, 0, 1, 3604480, 0, 1, 3735552, 0, 1, 3866624, 0, 1, 3997696, 0, 1, 4128768, 0, 1, 4259840, 0, 1, 4390912, 0, 1, 4521984, 0, 1, 4653056, 0, 1, 4784128, 0, 1, 4915200, 0, 1, 5046272, 0, 1, 5177344, 0, 1, 5308416, 0, 0, 5439488, 0, 1, 5570560, 0, 1, 5701632, 0, 1, 5832704, 0, 1, 5963776, 0, 1, 6094848, 0, 1, 6225920, 0, 1, 6356992, 0, 1, 6488064, 0, 1, 6619136, 0, 1 )
+tile_data = PoolIntArray( -1114112, 536870912, 1, -1114058, 0, 1, -983040, 536870912, 1, -982986, 0, 1, -851968, 536870912, 1, -851914, 0, 1, -851837, 0, 1, -720896, 536870912, 1, -720842, 0, 1, -720765, 0, 2, -589824, 536870912, 2, -589770, 0, 1, -589693, 0, 1, -458752, 536870912, 2, -458698, 0, 1, -458621, 0, 2, -327680, 536870912, 2, -327626, 0, 1, -327549, 0, 1, -196608, 536870912, 2, -196554, 0, 1, -196477, 0, 2, -65536, 536870912, 2, -65482, 0, 1, -65405, 0, 0, 65536, 0, 2, 65667, 0, 2, 196608, 0, 2, 196739, 0, 1, 327680, 0, 2, 327811, 0, 2, 458752, 0, 2, 458883, 0, 0, 589824, 0, 2, 589955, 0, 2, 720896, 0, 2, 721027, 0, 1, 851968, 0, 2, 852099, 0, 2, 983040, 0, 2, 983171, 1, 0, 1114112, 0, 2, 1114216, 1, 0, 1114218, 1, 0, 1114220, 1, 0, 1114222, 1, 0, 1114224, 1, 0, 1114226, 1, 0, 1114228, 1, 0, 1114230, 0, 1, 1114232, 0, 1, 1114234, 0, 0, 1114236, 0, 1, 1114238, 0, 1, 1114240, 0, 0, 1114242, 0, 0, 1114244, 0, 1, 1245184, 536870912, 2, 1376256, 536870912, 2, 1507328, 536870912, 2, 1638400, 536870912, 2, 1769472, 0, 2, 1900544, 0, 2, 2031616, 0, 2, 2162688, 0, 2, 2293760, 0, 2, 2424832, 0, 1, 2555904, 0, 1, 2686976, 536870912, 1, 2752514, 0, 2, 2752516, 0, 2, 2752518, 0, 2, 2752520, 0, 2, 2752522, 0, 2, 2752524, 0, 2, 2752526, 0, 2, 2752528, 0, 2, 2752530, 0, 2, 2752542, 536870912, 1, 2818048, 536870912, 1, 2949120, 536870912, 1, 3080192, 536870912, 1, 3211264, 0, 1, 3342336, 0, 1, 3473408, 0, 1, 3604480, 0, 1, 3735552, 0, 1, 3866624, 0, 1, 3997696, 0, 1, 4128768, 0, 1, 4259840, 0, 1, 4390912, 0, 1, 4521984, 0, 1, 4653056, 0, 1, 4784128, 0, 1, 4915200, 0, 1, 5046272, 0, 1, 5177344, 0, 1, 5308416, 0, 0, 5439488, 0, 1, 5570560, 0, 1, 5701632, 0, 1, 5832704, 0, 1, 5963776, 0, 1, 6094848, 0, 1, 6225920, 0, 1, 6356992, 0, 1, 6488064, 0, 1, 6619136, 0, 1 )
 
 [node name="TileMapCrateOnly" type="TileMap" parent="Maps"]
 tile_set = ExtResource( 2 )
@@ -30,6 +34,7 @@ cell_size = Vector2( 8, 8 )
 collision_layer = 1024
 collision_mask = 1024
 format = 1
+tile_data = PoolIntArray( 2293898, 1, 0, 2293900, 1, 0, 2293902, 1, 0, 2293904, 1, 0, 2293906, 1, 0, 2293908, 1, 0, 2293910, 1, 0 )
 
 [node name="TileMapPlayerOnly" type="TileMap" parent="Maps"]
 tile_set = ExtResource( 3 )
@@ -66,54 +71,97 @@ dropoff_point = NodePath("../GrabDropoff")
 position = Vector2( 2, 31 )
 shape = SubResource( 1 )
 
+[node name="Grabber2" parent="." instance=ExtResource( 9 )]
+editor/display_folded = true
+position = Vector2( 1160, 224 )
+dropoff_point = NodePath("../GrabDropoff2")
+
+[node name="CollisionShape2D" parent="Grabber2/CrateDetector" index="0"]
+position = Vector2( 2, 31 )
+shape = SubResource( 2 )
+
 [node name="GrabDropoff" type="Node2D" parent="."]
 position = Vector2( 766, 205 )
+
+[node name="GrabDropoff2" type="Node2D" parent="."]
+position = Vector2( 978, -45 )
 
 [node name="SquareCoin" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 189, 292 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin2" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 189, 316 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin8" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
-position = Vector2( 386, 316 )
-frame = 7
+position = Vector2( 307, 316 )
+frame = 1
+
+[node name="SquareCoin10" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 407, 316 )
+frame = 1
+
+[node name="SquareCoin11" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 407, 289 )
+frame = 0
+
+[node name="SquareCoin12" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 407, 260 )
+frame = 0
 
 [node name="SquareCoin9" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
-position = Vector2( 386, 291 )
-frame = 7
+position = Vector2( 307, 291 )
+frame = 1
 
 [node name="SquareCoin3" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 600, 309 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin4" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 628, 290 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin5" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 656, 280 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin6" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
 position = Vector2( 602, 276 )
-frame = 8
+frame = 2
 
 [node name="SquareCoin7" parent="." instance=ExtResource( 10 )]
 editor/display_folded = true
-position = Vector2( 1034, 120 )
-frame = 8
+position = Vector2( 1025, 121 )
+frame = 2
+
+[node name="SquareCoin13" parent="." instance=ExtResource( 10 )]
+editor/display_folded = true
+position = Vector2( 998, 121 )
+frame = 1
+
+[node name="Balloon" parent="." instance=ExtResource( 11 )]
+position = Vector2( 410, 211 )
+
+[node name="Balloon2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1025, 23 )
+
+[node name="Balloon3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1101, 142 )
 
 [editable path="Player"]
 
 [editable path="Grabber"]
+
+[editable path="Grabber2"]

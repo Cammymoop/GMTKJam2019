@@ -31,6 +31,8 @@ var y_velocity = 0
 
 var on_ground = false
 
+var popped_count = 0
+
 var BOX_LAYER = 1
 
 var ON_GROUND_LAYER = 7
@@ -109,6 +111,12 @@ func _physics_process(delta):
 func save_checkpoint(checkpoint_coin : Node):
 	#print('now saving checkpint')
 	r_checkpointer.set_checkpoint(self, checkpoint_coin.get_path())
+
+func save_popped_balloons():
+	r_checkpointer.add_popped_balloons(popped_count)
+
+func clear_popped_balloons():
+	r_checkpointer.reset_balloons()
 
 func clear_checkpoint():
 	r_checkpointer.unset_checkpoint()
@@ -227,6 +235,7 @@ func reset_game() -> void:
 	get_tree().reload_current_scene()
 
 func full_reset() -> void:
+	clear_popped_balloons()
 	clear_checkpoint()
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://GameScene.tscn")
@@ -242,8 +251,12 @@ func end() -> void:
 		return
 	
 	clear_checkpoint()
+	save_popped_balloons()
 # warning-ignore:return_value_discarded
 	get_tree().change_scene_to(next_scene)
+
+func got_balloon():
+	popped_count += 1
 
 
 func _on_KickTimer_timeout():

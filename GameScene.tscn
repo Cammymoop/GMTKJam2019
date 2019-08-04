@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/tileset/NormalTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tileset/CrateTileset.tres" type="TileSet" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Crate.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Doorway.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Balloon.tscn" type="PackedScene" id=10]
 
 [node name="Root" type="Node2D"]
 
@@ -55,5 +56,17 @@ position = Vector2( 455, 176 )
 
 [node name="Coin" parent="." instance=ExtResource( 9 )]
 frame = 2
+
+[node name="Balloon" parent="." instance=ExtResource( 10 )]
+position = Vector2( 407, 95 )
+
+[node name="Balloon2" parent="." instance=ExtResource( 10 )]
+position = Vector2( 153, 2 )
+
+[node name="Balloon3" parent="." instance=ExtResource( 10 )]
+position = Vector2( 134, 14 )
+
+[node name="Balloon4" parent="." instance=ExtResource( 10 )]
+position = Vector2( 178, 8 )
 
 [editable path="Player"]

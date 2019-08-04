@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tileset/NormalTiles.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tileset/CrateTileset.tres" type="TileSet" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Grabber.tscn" type="PackedScene" id=10]
 [ext_resource path="res://CheckPointCoin.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Balloon.tscn" type="PackedScene" id=12]
 
 [node name="Root" type="Node2D"]
 
@@ -78,5 +79,32 @@ position = Vector2( 119, 496 )
 [node name="CheckpointCoin" parent="." instance=ExtResource( 11 )]
 position = Vector2( 543, 681 )
 frame = 2
+
+[node name="Balloon" parent="." instance=ExtResource( 12 )]
+position = Vector2( 392, 669 )
+
+[node name="Balloon2" parent="." instance=ExtResource( 12 )]
+position = Vector2( 60, 465 )
+
+[node name="Balloon3" parent="." instance=ExtResource( 12 )]
+position = Vector2( 686, 581 )
+
+[node name="Balloon5" parent="." instance=ExtResource( 12 )]
+position = Vector2( 665, 561 )
+
+[node name="Balloon6" parent="." instance=ExtResource( 12 )]
+position = Vector2( 642, 567 )
+
+[node name="Balloon7" parent="." instance=ExtResource( 12 )]
+position = Vector2( 410, 653 )
+
+[node name="Balloon8" parent="." instance=ExtResource( 12 )]
+position = Vector2( 432, 641 )
+
+[node name="Balloon9" parent="." instance=ExtResource( 12 )]
+position = Vector2( 452, 634 )
+
+[node name="Balloon4" parent="." instance=ExtResource( 12 )]
+position = Vector2( 833, 630 )
 
 [editable path="Player"]
